@@ -1,0 +1,28 @@
+<ul class="breadcrumb">
+  <li><a ui-sref="home">Home</a></li>
+  <li>Variables</li>
+  </ul>
+<div class="row">
+  <div class="col l12 s12 m12">
+    <div class="card-panel">
+      <h3>Variables</h3>
+      <table ng-init="indexVariables()" class="responsive-table highlight bordered">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Valor máximo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="variable in allVariables track by $index">
+            <td>{{variable.name}}</td>
+            <td>{{variable.optimun_rating}}</td>
+            <td><a ui-sref="editVariable({id: variable.id})">Editar</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn" ng-click="downloadVariables()">Descargar listado</button>
+    </div>
+  </div>
+</div>
+<button ng-click="testVariable()">Test</button>

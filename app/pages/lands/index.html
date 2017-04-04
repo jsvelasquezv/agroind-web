@@ -1,0 +1,42 @@
+<ul class="breadcrumb">
+  <li><a ui-sref="home">Home</a></li>
+  <li>Fincas</li>
+  </ul>
+<div class="row">
+  <div class="col l12 s12 m12">
+    <div class="card-panel">
+      <h3>Fincas</h3>
+      <table ng-init="indexLands()" class="responsive-table highlight bordered">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Vereda</th>
+            <th>Municipio</th>
+            <th>ASNM</th>
+            <th>Latitud</th>
+            <th>Longitud</th>
+            <th>Area</th>
+            <th>Asociación</th>
+            <th>Propietario</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="land in allLands track by $index">
+            <td>{{land.name}}</td>
+            <td>{{land.zone}}</td>
+            <td>{{land.municipality}}</td>
+            <td>{{land.asnm}}</td>
+            <td>{{land.latitude}}</td>
+            <td>{{land.longitude}}</td>
+            <td>{{land.area}}</td>
+            <td>{{land.affiliation}}</td>
+            <td>{{land.users_id}}</td>
+            <!-- <td><a ng-click="delete(land.id)">Eliminar</a></td> -->
+            <td><a ui-sref="editLand({id: land.id})">Editar</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button class="btn" ng-click="downloadLands()">Descargar listado</button>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<ul class="breadcrumb">
+  <li><a ui-sref="home">Home</a></li>
+  <li>Indicadores</li>
+  </ul>
+<div class="row">
+  <div class="col l12 s12 m12">
+    <div class="card-panel">
+      <h3>Indicadores</h3>
+      <table ng-init="indexIndicators()" class="responsive-table highlight bordered">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="indicator in allIndicators track by $index">
+            <td>{{indicator.name}}</td>
+            <!-- <td><a ng-click="delete(land.id)">Eliminar</a></td> -->
+            <td><a ui-sref="editIndicator({id: indicator.id})">Editar</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn" ng-click="downloadIndicators()">Descargar listado</button>
+    </div>
+  </div>
+</div>

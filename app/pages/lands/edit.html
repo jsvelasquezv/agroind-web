@@ -1,0 +1,119 @@
+<ul class="breadcrumb">
+  <li><a ui-sref="home">Home</a></li>
+  <li><a ui-sref="lands">fincas</a></li>
+  <li>Editar finca</li>
+  </ul>
+<div class="row" ng-init=viewLand()>
+  <div class="col l8 m12 s12 offset-l2">
+    <div class="card-panel">
+      <h4>Editar Finca</h4>
+      <form novalidate role="form" name="form">
+        <div class="row">
+          <div class="input-field col l6 m12 s12">
+            <label class="active" for="name">Nombre</label>
+            <input type="text" name="name" ng-model="land.name" ng-minlengthlength="3" ng-maxlength="30" required>
+          </div>
+          <div class="input-field col l6 m12 s12">
+            <label class="active" for="zone">Vereda</label>
+            <input type="text" name="zone" ng-model="land.zone" ng-minlength="2" ng-maxlength="30" required>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col l6 m12 s12">
+            <label class="active" for="municipality">Municipio</label>
+            <input type="text" name="municipality" ng-model="land.municipality" ng-minlength="5" ng-maxlength="60" required>
+          </div>
+          <div class="input-field col l6 m12 s12">
+            <label class="active" for="asnm">Altura sobre el nivel del mar</label>
+            <input type="text" name="asnm" ng-model="land.asnm" ng-minlength="3" ng-maxlength="30">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col l6 m12 s12">
+            <label class="active" for="latitude">Latitud</label>
+            <input type="text" name="latitude" ng-model="land.latitude" ng-minlength="1" ng-maxlength="30">
+          </div>
+          <div class="input-field col l6 m12 s12">
+            <label class="active" for="longitude">Longitud</label>
+            <input type="text" name="longitude" ng-model="land.longitude" ng-minlength="1" ng-maxlength="30">
+          </div>
+        </div>
+          
+        <div class="row">
+          <div class="input-field col l6 m12 s12">
+            <label class="active" for="area">Área</label>
+            <input type="text" name="area" ng-model="land.area" ng-minlength="1" ng-maxlength="30">
+          </div>
+          <div class="input-field col l6 m12 s12">
+            <label class="active" for="affiliation">Asociación</label>
+            <input type="text" name="affiliation" ng-model="land.affiliation" ng-minlength="1" ng-maxlength="50">
+          </div>
+        </div>
+
+        <div class="row" ng-init = 'allUsers()'>
+          <div class="input-field col l6 m12 s12">
+            <select class="browser-default" name="user_id" id="user_id" ng-model=land.users_id required>
+              <option value="">Seleccione un propietario</option>
+              <option ng-repeat="user in allUsers" value="{{user.id}}">{{user.name}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div ng-messages="form.name.$error" ng-if="form.name.$touched">
+          <p ng-message="minlength">El nombre es muy corto.</p>
+          <p ng-message="maxlength">El nombre es muy largo.</p>
+          <p ng-message="required">El nombre es requerido.</p>
+        </div>
+
+        <div ng-messages="form.zone.$error" ng-if="form.zone.$touched">
+          <p ng-message="minlength">La vereda es muy corta.</p>
+          <p ng-message="maxlength">La vereda es muy larga.</p>
+        </div>
+
+        <div ng-messages="form.municipality.$error" ng-if="form.municipality.$touched">
+          <p ng-message="minlength">El municipio es muy corto.</p>
+          <p ng-message="maxlength">El municipio es muy largo.</p>
+          <p ng-message="required">El municipio es requerido.</p>
+        </div>
+
+        <div ng-messages="form.asnm.$error" ng-if="form.asnm.$touched">
+          <p ng-message="minlength">La ASNM es muy corta.</p>
+          <p ng-message="maxlength">La ASNM es muy larga.</p>
+        </div>
+
+        <div ng-messages="form.latitude.$error" ng-if="form.latitude.$touched">
+          <p ng-message="minlength">La latitud es muy corta.</p>
+          <p ng-message="maxlength">La latitud es muy larga.</p>
+        </div>
+
+        <div ng-messages="form.longitude.$error" ng-if="form.longitude.$touched">
+          <p ng-message="minlength">La longitud es muy corta.</p>
+          <p ng-message="maxlength">La longitud es muy larga.</p>
+        </div>
+
+        <div ng-messages="form.area.$error" ng-if="form.area.$touched">
+          <p ng-message="minlength">El área es muy corta.</p>
+          <p ng-message="maxlength">El área es muy larga.</p>
+        </div>
+
+        <div ng-messages="form.affiliation.$error" ng-if="form.affiliation.$touched">
+          <p ng-message="minlength">La asociación es muy corta.</p>
+          <p ng-message="maxlength">La asociación es muy larga.</p>
+        </div>
+
+        <div ng-messages="form.user_id.$error" ng-if="form.user_id.$touched">
+          <p ng-message="required">Debe seleccionar un propietario.</p>
+        </div>
+
+        <div class="row">
+          <div class="col m12 s12">
+            <input class="btn right" type="submit" ng-click="editLand()" value="Registrar" ng-disabled="form.$invalid" ng-class="{disabled: form.$invalid}"></input>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

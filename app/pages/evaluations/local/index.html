@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col l12 s12 m12">
+    <div class="card-panel">
+      <h3>Evaluaciones</h3>
+      <table ng-init="downloadedEvaluations()" class="responsive-table highlight bordered">
+        <thead>
+          <tr>
+            <th>Finca</th>
+            <th>Evaluador</th>
+            <th>Creación</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="evaluation in localAllEvaluations">
+            <td>{{evaluation.land.name}}</td>
+            <td>{{evaluation.user.name}}</td>
+            <td>{{evaluation.created_at}}</td>
+            <!-- <td><a ng-click="delete(land.id)">Eliminar</a></td> -->
+            <td><a ui-sref="localQualifyIndicators({evaluation_id: evaluation.id})">Calificar</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn" ng-click="uploadEvaluations()">Subir listado</button>
+      <button ng-click="loadScores()">load</button>
+    </div>
+  </div>
+</div>

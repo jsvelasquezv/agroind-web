@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col m12 s12 l8 offset-l2">
+        <div class="card-panel">
+            <h4>Asignar evaluación</h4>
+            <form novalidate role="form" name="form" ng-init="allLands()">
+                <select class="browser-default" name="land" ng-options="land.id as land.name for land in allLands track by land.id" ng-model="land_id" required>
+                    <option value="">Selecciona una finca</option>
+                </select>
+                <input type="text" class="datepicker" name="assignment_date" ng-model="assignment_date" required>
+            </form>
+            <button ng-click="newEvaluation()" class="btn" ng-disabled="form.$invalid" ng-class="{disabled: form.$invalid}">Crear asignacion</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+        $('.datepicker').pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 15, // Creates a dropdown of 15 years to control year
+            format: 'yyyy-mm-dd',
+            formatSubmit: 'yyyy-mm-dd'
+        });
+    });
+</script>
